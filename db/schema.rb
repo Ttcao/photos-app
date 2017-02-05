@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20170205054800) do
   end
 
   create_table "photos", force: :cascade do |t|
-    t.binary   "image"
+    t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
