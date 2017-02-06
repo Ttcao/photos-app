@@ -1,13 +1,21 @@
-<html>
-    <head>
-        <title>Image Upload</title>
-    </head>
-    <body>
-        <h1>Upload Image</h1>
 
-        <form action="/photo" method="POST" enctype="multipart/form-data">
-            <input type="file" name="image">
-            <input type="submit" value="Upload image">
-        </form>
-    </body>
-</html>
+<h4>Upload Image</h4>
+
+<label for="upload-form-label">Upload your image:</label>
+<form action="/photo" method="POST" enctype="multipart/form-data">
+    <input type="file" name="image">
+    <input type="submit" value="Upload image">
+</form>
+
+<label for="search-bar-label">Search your photos by category:</label>
+<select class="multiple-searchbar" multiple="multiple" style="width: 50%">
+  <% @photolabels.each do |photolabel| %>
+  <option><%= photolabel.label %></option>
+  <% end %>
+</select>
+
+<script type="text/javascript">
+$(".multiple-searchbar").select2({
+  placeholder: "Select a category"
+});
+</script>

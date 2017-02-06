@@ -7,7 +7,6 @@ class VisionService
 
   def tempfile_to_photo_labels(tempfile, photo_id)
 
-    # Your Google Cloud Platform project ID
     project_id = "studious-nature-157713"
 
     # Instantiates a client
