@@ -10,12 +10,9 @@
 <label for="search-bar-label">Search your photos by category:</label>
 <select class="multiple-searchbar" multiple="multiple" style="width: 50%">
   <% @photolabels.each do |photolabel| %>
-  <option><%= photolabel.label %></option>
+  <option value="<%= photolabel.label %>"><%= photolabel.label %></option>
   <% end %>
 </select>
+<button id="selected-labels">Enter</button>
 
-<script type="text/javascript">
-$(".multiple-searchbar").select2({
-  placeholder: "Select a category"
-});
-</script>
+<div id="image-board"></div>
