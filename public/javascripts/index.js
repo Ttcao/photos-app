@@ -17,10 +17,20 @@ $(document).ready(function() {
       data: JSON.stringify({label: selectedValues}),
     }).done(function(response) {
       response.images.forEach(function(imageObject) {
+
+        var imageBoard = document.getElementById('image-board');
+
         var image = new Image();
         image.src = "data:image/png;base64," + imageObject.image ;
-        var imageBoard = document.getElementById('image-board');
-        imageBoard.appendChild(image);
+        image.classList.add('img-responsive');
+
+        var div = document.createElement("div");
+        div.classList.add('col-lg-3', 'col-md-4', 'col-xs-6', 'thumb');
+
+        div.appendChild(image);
+
+        imageBoard.append(div);
+
       });
 
     });

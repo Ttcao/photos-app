@@ -24,12 +24,13 @@ post '/photo' do
   @photo_labels = vision_service.tempfile_to_photo_labels(tempfile, @photo.id)
   @photo_labels.each {|label| label.save}
   @photo_labels.to_json
+  redirect to '/'
 end
 
 post '/photos' do
   @json = JSON.parse(request.body.read)
 
-  # get photo label value from json array
+  # get photo label values from json array
   @photo_label = PhotoLabel.where(@json)
 
   # get the base64 string
@@ -45,8 +46,3 @@ post '/photos' do
   content_type :json
   {"images": @matching_photos.flatten}.to_json
 end
-
-# 1. use the labels to look up `photo_labels` PhotoLabels.where(label = @json[0])
-# 2. use the photo_id from the results to get the Base64 encoded thing
-# 3. send the Base64 encoded string as the response
-# 4. append it the base64 (JavaScript)
