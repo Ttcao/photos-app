@@ -59,15 +59,7 @@ $(document).ready(function() {
      board.innerHTML = "";
     };
 
-
   $('#selected-labels').on('click', showSelectedImages);
-
-  $('.fancybox').fancybox({
-   padding : 0,
-   type        : 'image',
-   openEffect  : 'none',
-   closeEffect : 'none'
-  });
 
 
 });
