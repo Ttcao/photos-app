@@ -17,6 +17,7 @@ end
 
 post '/photo' do
   tempfile = @params[:image][:tempfile]
+  puts "Tempfile is #{tempfile}"
   image = Base64.encode64(open(tempfile) { |io| io.read })
   @photo = Photo.new({image: image.gsub(/\n/, '')})
   @photo.save
