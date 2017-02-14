@@ -1,5 +1,7 @@
 # My Photo Album
 
+Access the app here: https://my-smart-album.herokuapp.com/
+
 ### Overview:
 As part of the WDI course, the week 12 project was to build a full-stack application using any technology, framework and tools of your choice.
 
