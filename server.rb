@@ -23,6 +23,8 @@ post '/photo' do
     puts "io.read is #{io.read}"
     io.read
   end
+  puts "opened file!!!!"
+  puts "opened file is #{opened_file}"
   image = Base64.encode64(opened_file)
   @photo = Photo.new({image: image.gsub(/\n/, '')})
   @photo.save
