@@ -54,12 +54,21 @@ $(document).ready(function() {
 
   };
 
+  // prevent form from submitting if no image is selected
+  var preventUploadIfNoImageSelected = function(e) {
+    if ($('#image-selector')[0].value == "") {
+      e.preventDefault();
+    }
+
+  }
+
+
   // clear the images on the page
   var clearImageBoard = function(board) {
      board.innerHTML = "";
     };
 
   $('#selected-labels').on('click', showSelectedImages);
-
+  $('#upload-button').on('click', preventUploadIfNoImageSelected);
 
 });
