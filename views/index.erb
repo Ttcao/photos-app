@@ -30,7 +30,7 @@
       <h4 class="page-header">Search images:</h4>
 
         <select class="multiple-searchbar" multiple="multiple" style="width: 90%">
-          <% @photolabels.each do |photolabel| %>
+          <% @photolabels.sort.each do |photolabel| %>
           <option value="<%= photolabel %>"><%= photolabel %></option>
           <% end %>
         </select>
