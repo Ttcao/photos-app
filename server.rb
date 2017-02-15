@@ -17,13 +17,9 @@ end
 
 post '/photo' do
   tempfile = @params[:image][:tempfile]
-  puts "tempfile is #{tempfile}"
   opened_file = File.open(tempfile, "r")
   read_file = opened_file.read
-  puts "opened file is #{opened_file}"
-  puts "read file is #{read_file}"
   image = Base64.encode64(read_file)
-  binding.pry
   @photo = Photo.new({image: image.gsub(/\n/, '')})
   @photo.save
   vision_service = VisionService.new
