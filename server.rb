@@ -17,16 +17,13 @@ end
 
 post '/photo' do
   tempfile = @params[:image][:tempfile]
-  opened_file = open(tempfile) do |io|
-    puts "let's open file"
-    puts "io is #{io}"
-    puts "io.read is #{io.read}"
-    io.read
-  end
-  binding.pry
   puts "tempfile is #{tempfile}"
+  opened_file = File.open(tempfile, "r")
+  read_file = opened_file.read
   puts "opened file is #{opened_file}"
-  image = Base64.encode64(opened_file)
+  puts "read file is #{read_file}"
+  image = Base64.encode64(read_file)
+  binding.pry
   @photo = Photo.new({image: image.gsub(/\n/, '')})
   @photo.save
   vision_service = VisionService.new
