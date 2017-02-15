@@ -18,7 +18,7 @@ The brief of the project was to:
 My Photo Album is application that allows you to search through your photos by categories. Using Google's Vision API, photos are classified in categories by detecting individual objects and faces within images.
 
 ### Technologies used:
-- Ruby, Ruby Sinatra, JavaScript, HTML, CSS, Bootstrap, Google Vision API, Fancybox, Atom (editor), debugger, iTerm, Git.
+- Ruby, Ruby Sinatra, JavaScript, HTML, CSS, Bootstrap, Google Vision API, Fancybox, Atom (editor), Pry, iTerm, Git.
 
 ### Approach taken:
 - Planned the models and the database relationships within the application
