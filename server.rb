@@ -10,9 +10,8 @@ require_relative 'models/photo_label'
 require_relative 'service/vision_service'
 
 get '/' do
-  @photolabels = PhotoLabel.all
+  @photolabels = PhotoLabel.all.map {|label| label.label}.uniq
   erb :index
-  # content_type :json
 end
 
 post '/photo' do
@@ -33,10 +32,11 @@ post '/photos' do
   @json = JSON.parse(request.body.read)
 
   # get photo label values from json array
-  @photo_label = PhotoLabel.where(@json)
+  @photo_labels = PhotoLabel.where(@json)
+  @filtered_labels = @photo_labels.select { |label| label.score > 0.7 }
 
   # get the base64 string
-  @matching_photos = @photo_label.map do |label|
+  @matching_photos = @filtered_labels.map do |label|
     @matching_photo_id = label.photo_id
     @photos = Photo.where(id: @matching_photo_id)
     @photos.map do |photo|
