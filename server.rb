@@ -9,8 +9,10 @@ require_relative 'models/photo'
 require_relative 'models/photo_label'
 require_relative 'service/vision_service'
 
+MIN_SCORE = 0.7
+
 get '/' do
-  @photolabels = PhotoLabel.all.map {|label| label.label}.uniq
+  @photolabels = PhotoLabel.all.select {|label| label.score > MIN_SCORE }.map {|label| label.label}.uniq
   erb :index
 end
 
@@ -33,7 +35,7 @@ post '/photos' do
 
   # get photo label values from json array
   @photo_labels = PhotoLabel.where(@json)
-  @filtered_labels = @photo_labels.select { |label| label.score > 0.7 }
+  @filtered_labels = @photo_labels.select { |label| label.score > MIN_SCORE }
 
   # get the base64 string
   @matching_photos = @filtered_labels.map do |label|
