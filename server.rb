@@ -18,6 +18,7 @@ end
 post '/photo' do
   tempfile = @params[:image][:tempfile]
   opened_file = open(tempfile) do |io|
+    puts "let's open file"
     puts "io is #{io}"
     puts "io.read is #{io.read}"
     io.read
