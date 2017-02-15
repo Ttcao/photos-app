@@ -16,7 +16,10 @@ class VisionService
     google_labels = vision.image(tempfile).labels
 
     # convert each label to our photo_label
-    return google_labels.map { |google_label| google_label_to_photo_label(google_label, photo_id) }
+    results = google_labels.map { |google_label| google_label_to_photo_label(google_label, photo_id) }
+    all_label = PhotoLabel.new({:label=>"all", :score=>100, :photo_id=>photo_id})
+    results << all_label
+    return results
 
   end
 
