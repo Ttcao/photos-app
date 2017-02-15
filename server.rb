@@ -24,7 +24,7 @@ post '/photo' do
     io.read
   end
   binding.pry
-  puts "opened file!!!!"
+  puts "tempfile is #{tempfile}"
   puts "opened file is #{opened_file}"
   image = Base64.encode64(opened_file)
   @photo = Photo.new({image: image.gsub(/\n/, '')})
